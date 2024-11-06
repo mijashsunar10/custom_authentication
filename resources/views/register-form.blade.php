@@ -64,6 +64,8 @@
                     <p class="text-center small">Enter your personal details to create account</p>
                   </div>
 
+                  {{-- display flash message here --}}
+
                   <form class="row g-3 " action="{{route('registerUser')}}" method="POST">
                     @csrf
                     <div class="col-12">
@@ -71,6 +73,19 @@
                       <input type="text" name="name" class="form-control" >
                       <span  class="text-danger">@error('name'){{$message}}@enderror</span>
                     </div>
+
+                    {{-- display flash message here --}}
+
+                    @if(Session::has('success'))
+                    <div class="alert alert-success" role="alert">{{Session::get('success')}}</div>
+                      @endif
+
+                       @if(Session::has('error'))
+                    <div class="alert alert-danger" role="alert">{{Session::get('error')}}</div>
+                      @endif
+                        
+
+                    
 
                     <div class="col-12">
                       <label for="yourEmail" class="form-label">Your Email</label>
