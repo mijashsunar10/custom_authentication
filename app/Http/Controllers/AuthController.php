@@ -10,4 +10,19 @@ class AuthController extends Controller
     {
         return view("register-form");
     }
+
+    public function registerUser(Request $request)
+    {
+        //prefrom validation here
+
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email|unique:users',
+            'username'=>'required',
+            'password'=>'required|min:6|max:8|confirmed',
+        ]);
+
+
+
+    }
 }
